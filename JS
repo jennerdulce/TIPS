@@ -1,0 +1,81 @@
+Retrieve and Store DATA:
+----- RETRIEVE -----
+var highscoreEl = document.getElementById('highscores');
+var retrievedData = localStorage.getItem('scoresData');
+
+function renderHighscore() {
+  if (retrievedData) {
+    var parsedRetrievedData = JSON.parse(retrievedData);
+    highscoreList = parsedRetrievedData;
+  } else {
+    for (var i = 0; i < randomNames.length; i++) {
+      new Player(randomNames[i], scores[i]);
+    }
+  }
+}
+
+----- STORE -----
+function storeHighScore() {
+  var stringifiedScores = JSON.stringify(highscoreList);
+  localStorage.setItem('scoresData', stringifiedScores);
+}
+
+// Do this to immediately retrieve data
+storeHighScore();
+retrievedData = localStorage.getItem('scoresData');
+
+----- RANDOM NUMBER GENERATOR -----
+function randomNumber(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+----- MODAL CSS -----
+modal-finish-bg {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  /* transition: visibility 0s opacity 0,5s; NOT WORKING */
+}
+
+.bg-none {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.bg-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+----- TIMER -----
+var myVar;
+function startTimer() {
+  myVar = setInterval(function () {
+    timeLeft--;
+
+    if (timeLeft >= 0) {
+      var timeEl = document.getElementById('timer');
+      timeEl.textContent = timeLeft;
+    }
+
+    if (timeLeft === 0) {
+      finishStatementEl.textContent = 'You Lose!';
+      endingAudio[1].play();
+      myStopFunction();
+      openEndModal();
+    }
+  }, 1000);
+}
+
+function myStopFunction() {
+  clearTimeout(myVar);
+}
