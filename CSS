@@ -4,3 +4,50 @@ box-shadow: 3px 5px 15px rgba(0, 0, 0, .25);
 
 Border:
 border: 1px solid #ccc;
+
+
+----- MODAL CSS -----
+modal-finish-bg {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  /* transition: visibility 0s opacity 0,5s; NOT WORKING */
+}
+
+.bg-none {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.bg-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+----- Vertically Align Text -----
+#text {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  top:50%;
+  transform: translateY(-50%)
+}
+
+Set line-height to the same value as height
+
+
+
+----- Media Queries -----
+@media(min-width: 960px) {
+  // code block
+}
+- When the width of the browser reaches 960px.. Will run/change the css
