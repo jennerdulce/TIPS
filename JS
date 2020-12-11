@@ -53,3 +53,80 @@ function startTimer() {
 function myStopFunction() {
   clearTimeout(myVar);
 }
+
+
+
+----- SELECT/DROPDOWN -----
+When dealing with a dropdown or 'select' element. use on'change' as the event handler. Instead of on'click' for the options.
+$('select').on('change', function () {
+  let $category = $(this).val();
+
+  if ($category === 'home') {
+    $('section').show();
+
+  } else {
+    // Hides ALL images
+    $('section').hide();
+
+    // Shows images with the class chosen
+    $(`.${$category}`).show();
+  }
+});
+
+
+----- jQuery -----
+When cloning a template, there can be empty elements that you want to set..
+Use .find() to target elements within a cloned template.
+
+let $template = $sectionTemplate.clone();
+let $newParagraph = $template.find('p');
+
+----- AJAX/THEN -----
+A-synchronization: other code will continue to run while the .ajax method retrieves the JSON data. 
+Trying to render/work with data at this point may be undefined because the render methods are trying 
+to work with data that has not finished processing yet.
+
+$.ajax('./data/path-01.json') {
+  .then( data => {
+    data.forEach( value => {
+      // code block
+    });
+    // Insert render functions here
+  });
+
+----- .concat() -----
+let a = 'hi this is a ';
+let b = 'STRING!'
+a.concat(b)
+
+----- Spread Operator -----
+const a = [1,2,3]
+const b = [4,5,6]
+
+const(a, b)
+const function(arr1, arr2) => {
+  arr1.push(...arr2); // Says push everything in this array into the other array
+}
+
+----- const variables -----
+You are able to add more data to a const variable.
+You cannot redeclare a const variable or overwrite existing data
+
+
+----- const variables -----
+const octavia = { fullName: 'Octavia Estelle Butler' };
+You are able to add new properties by declaring a property name to the object
+and setting a value even though it does not yet exist.
+
+const addBirthYearProperty = (obj, year) => {
+  obj.yearBorn = year;
+};
+
+const addBirthYearProperty = function(obj, year) {
+  obj.yearBorn = year;
+};
+
+function addBirthYearProperty(obj, year){
+  obj.yearBorn = year;
+};
+
