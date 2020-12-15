@@ -81,6 +81,8 @@ Use .find() to target elements within a cloned template.
 let $template = $sectionTemplate.clone();
 let $newParagraph = $template.find('p');
 
+
+
 ----- AJAX/THEN -----
 A-synchronization: other code will continue to run while the .ajax method retrieves the JSON data. 
 Trying to render/work with data at this point may be undefined because the render methods are trying 
@@ -130,3 +132,65 @@ function addBirthYearProperty(obj, year){
   obj.yearBorn = year;
 };
 
+
+----- SORTiNG -----
+const sortByTitle = arr => {
+  arr.sort((a, b) => {
+    if (a.title.toLowerCase() > b.title.toLowerCase()) {
+      return 1; // move to the left
+    } else if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1; // move to the right
+    } else {
+      return 0; // do nothing
+    }
+  });
+  return arr;
+};
+
+// Sorts By Horns Property
+const sortByHorns = arr => {
+  // JS Automatically knows which letter comes before the other.
+  return arr.sort((a, b) => a.horns > b.horns ? 1 : -1); //true:false
+};
+
+
+----- MUSTACHE -----
+  <script id="image-template" type="x-tmpl-mustache">
+    <section class="{{ class }}">
+      <h2>{{ title }}</h2>
+      <img src="{{ image }}" alt="{{ description }}" title="{{ title }}" >
+      <p>{{ description }}</p>
+    </section>
+  </script>
+
+
+function renderImages(arr, page) {
+  arr.forEach(function (value) {
+
+    // MUSTACHE -----
+    let $imageTemplate = $('#image-template').html();
+    let $rendered = Mustache.render($imageTemplate, {
+      class: `${value.keyword} horns${value.horns} ${page}`,
+      title: value.title,
+      image: value.url,
+      description: value.description
+    });
+    $('#container').append($rendered);
+  });
+}
+
+
+----- CHECKING WHAT PAGE YORUE ON -----
+let currentPage = 0;
+
+
+function checkCurrentPage() {
+  if (currentPage === 1) {
+    $('.page2').hide();
+  } else if (currentPage === 2) {
+    $('.page1').hide();
+  } else if (currentPage === 0) {
+    $('.page2').show();
+    $('.page1').show();
+  }
+}
