@@ -89,9 +89,10 @@ Trying to render/work with data at this point may be undefined because the rende
 to work with data that has not finished processing yet.
 
 $.ajax('./data/path-01.json') {
+  // data represents the array full of object
   .then( data => {
     data.forEach( value => {
-      // code block
+      // code block to handle each object
     });
     // Insert render functions here
   });
