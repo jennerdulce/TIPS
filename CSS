@@ -55,3 +55,13 @@ Set line-height to the same value as height
   // code block
 }
 - When the width of the browser reaches 960px.. Will run/change the css
+
+
+
+----- Grid Holy Grail -----
+body {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+}
