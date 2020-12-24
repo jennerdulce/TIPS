@@ -229,3 +229,41 @@ const sortPeopleBetter = (arr) => {
   });
   return arr;
 };
+
+
+-----Object iteration -----
+// this is useful for single dimension/non nested objects
+  - nested objects cause some complications where code needs to be revised
+person = {
+  name: 'John',
+  age: 20,
+  hobbies: ['run', 'read', 'dance']
+}
+
+`for (... in ...)
+for (x in person) {
+  // x is each key/property
+  // `person[x]` is how you access the value. `person.x` does not work
+  console.log(x, peron[x]
+}
+
+`Object.keys()`
+// since we know that each iteration of `key` is a property of `person` we can use that to access the value by using person[key]
+Object.keys(person).forEach( key => {
+  console.log(person[key])
+})
+
+`Object.values()`
+// displays values of the object that you want.
+// unsure on why you would want to use this OBJECT CONSTRUCTOR PROTOTYPE METHOD
+Object.values(person).forEach( value => {
+  console.log(person[value])
+})
+
+`Object.entries()`
+// will return an array for each key value pair [key, value]
+// sometimes you want to turn objects into arrays
+Object.entires(person).forEach( entry => {
+  console.log(entry)
+})
+// if a value has 2 or more entries will return the value as an array with the items [key, [a, b, c]]
