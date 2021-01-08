@@ -8,7 +8,7 @@
   - these variables will go in handlers
   
 3. send out request
-`
+```
 let someVariable = 1234
 superagent.get(url) // sends out request to api
   
@@ -20,4 +20,4 @@ superagent.get(url) // sends out request to api
   .catch(err => {
   console.log(err)
   });
-`
+```
