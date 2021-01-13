@@ -44,3 +44,5 @@
 - `\l\` shows databases
 - `\c database_name` connects to specified database
 - while in database. you can type in SQL statements here. END WITH A `;`
+- when Selecting a row, use `value.rowCount === 0` or `value.rowCount > 0` to determine if data has been retrieved
+- `console.log(value)` from the database response to see what the response LOOKS LIKE
