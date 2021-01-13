@@ -77,3 +77,7 @@ const url = `https://api.themoviedb.org/3/search/movie`;
       console.log(err);
     });
 ```
+
+## TIPS
+- USE POSTMAN to see what API's response looks like
+- always do a `.body` on the API's Response
