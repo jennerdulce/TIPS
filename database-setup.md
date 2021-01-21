@@ -46,3 +46,4 @@
 - while in database. you can type in SQL statements here. END WITH A `;`
 - when Selecting a row, use `value.rowCount === 0` or `value.rowCount > 0` to determine if data has been retrieved
 - `console.log(value)` from the database response to see what the response LOOKS LIKE
+- `heroku pg:psql -f path/to/schema.sql --app your-heroku-app-name-here` creates database on heroku app
