@@ -48,3 +48,4 @@
 - `console.log(value)` from the database response to see what the response LOOKS LIKE
 - `heroku pg:psql -f path/to/schema.sql --app your-heroku-app-name-here` creates database on heroku app
     - in heroku app. need to add free postgress to allow databases
+    - connect to heroku database app via terminal: `heroku pg:psql --app appNameHere`
