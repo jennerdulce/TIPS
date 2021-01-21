@@ -49,3 +49,5 @@
 - `heroku pg:psql -f path/to/schema.sql --app your-heroku-app-name-here` creates database on heroku app
     - in heroku app. need to add free postgress to allow databases
     - connect to heroku database app via terminal: `heroku pg:psql --app appNameHere`
+    - `heroku pg:push booklistapp DATABASE_URL --app jdd-trt-booklist`
+`
