@@ -81,3 +81,5 @@ const url = `https://api.themoviedb.org/3/search/movie`;
 ## TIPS
 - USE POSTMAN to see what API's response looks like
 - always do a `.body` on the API's Response
+- You need to add API Keys in heroku app in order for app to work.
+  - heroku does not have a .env folder 
