@@ -23,6 +23,8 @@
     - place to store middleware
   - mkdir `__tests__` in root folder
     - when using supertest/jest, targets this folder and looks for tests to run
+  - mkdir src
+    - put middleware, handler directories, and server into this folder.
 
 4. create package.json
   - package.json provides meta information and lists dependencies
