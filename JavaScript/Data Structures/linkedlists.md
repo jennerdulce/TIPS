@@ -71,3 +71,7 @@
 
 - `.toString()`
   - displays the node values
+
+
+## REF
+[Code Challenge](https://github.com/jennerdulce/data-structures-and-algorithms/tree/main/javascript/code-challenges/Data-Structures/linkedList)
