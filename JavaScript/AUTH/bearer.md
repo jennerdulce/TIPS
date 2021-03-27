@@ -250,7 +250,45 @@ module.exports = async (req, res, next) => {
 
 
 
-## THE FLOW
+## THE FLOW OF AUTH
+
+### Sign up
+
+- user makes a request VIA front end
+  - this information is encoded to provide some security
+- the request is passed into route endpoint with '/signup'
+  - within this route, there is no middleware
+- instead, a new user is instantiated by miporting the schema model and invoking it as a value to a newly created variable
+- the newly created user is then saved by using `.save()` method
+  - however before this is done, there is a prehook within the schema
 
 
-<!-- GENERAL FLOW OF AUTH -->
+```javascript
+authRoutes.post('/signup', signUpHandler)
+
+function signUpHandler(req, res) {
+  // using the signUp route will create users
+  // username and password will be passed through req.body
+  const user = new User(req.body);
+  // hashes the passed in password 10 times and reassigns the password
+  // then saves to the object to the DB
+  console.log(user)
+  user.save()
+    .then(user => {
+      res.status(201).json(user)
+    })
+}
+```
+
+#### prehook
+
+- a prehook is essentially a method that is run before the method set in the paramater
+- in this case, the purpose of the prehook is to encrypt the password
+
+```javascript
+users.pre('save', async function () {
+  this.password = await bcrypt.hash(this.password, 10);
+})
+
+```
+
