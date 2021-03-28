@@ -1,3 +1,4 @@
+```javascript
 const loggerMiddleware = require('../src/middleware/logger.js');
 
 // Tested middleware needs to either be exported from the server or a separate module
@@ -30,3 +31,4 @@ describe('logger middleware', () => {
   });
 
 });
+```
