@@ -64,7 +64,15 @@ we found that either of those two alone would not produce the outcome that we wa
 - we made the client dynamic allowing us to share the code/file which wouldnt affect any of the other players
 - people who have the client only have to change the usernamevariable within the file to change who their name
 - this information would then be passed to the server where a new player object is created using the username inputted as a key for that object
-  - `client let username = 'jenner' socket.on('connect', () => { console.log('Connected to CHATROOM'); socket.emit('newPlayer', username) }) // server const players = { // fills in as users connect }; socket.on('newPlayer', payload => { socket.broadcast.emit('joined', payload) socket.emit('joined', payload) // adds new player players[payload] = new Player(payload) })`
+```javascript
+client let username = 'jenner' socket.on('connect', () => { 
+console.log('Connected to CHATROOM'); 
+socket.emit('newPlayer', username) }) // server 
+const players = { // fills in as users connect }; 
+
+socket.on('newPlayer', payload => { socket.broadcast.emit('joined', payload) 
+socket.emit('joined', payload) // adds new player players[payload] = new Player(payload) })
+```
 
 ## Object.keys()
 
@@ -75,5 +83,19 @@ we found that either of those two alone would not produce the outcome that we wa
 
 - im pretty sure theres a better way to do this..
 - but to allows only 1 winner per round.. we push the users into an array. there is an if statement that only runs when there is 1 user within the array. so that when all other users are pushed into the array when finished, the line of code will not run because the condition is no longer met
-` if (payload.text.split('\n')[0] === players[payload.username].sentence) { // stop game and display winner winner.push('Someone won') if (winner.length === 1) { // reset sentence sentence = sentences[Math.floor(Math.random() * sentences.length)] Object.keys(players).forEach(value => { players[value].sentence = sentence; }) // increment score players[payload.username].score++ socket.broadcast.emit('round', payload) socket.emit('round', payload) if (players[payload.username].score === 3) { socket.broadcast.emit('winner', payload) socket.emit('winner', payload) winner.pop() } else { // reset winner.pop() nextQuestion(socket, sentence) } }`
+```javascript
+if (payload.text.split('\n')[0] === players[payload.username].sentence) { // stop game and display winner 
+winner.push('Someone won') 
+if (winner.length === 1) { 
+// reset sentence 
+sentence = sentences[Math.floor(Math.random() * sentences.length)] 
+Object.keys(players).forEach(value => { players[value].sentence = sentence; }) 
+// increment score 
+players[payload.username].score++ 
+socket.broadcast.emit('round', payload) 
+socket.emit('round', payload)
+if (players[payload.username].score === 3) { socket.broadcast.emit('winner', payload) 
+socket.emit('winner', payload) winner.pop() 
+} else { // reset winner.pop() nextQuestion(socket, sentence) } }
+```
 REFER TO 401 LAB 14
