@@ -98,4 +98,9 @@ if (players[payload.username].score === 3) { socket.broadcast.emit('winner', pay
 socket.emit('winner', payload) winner.pop() 
 } else { // reset winner.pop() nextQuestion(socket, sentence) } }
 ```
+
+### TIPS
+- `db.accounts.find().pretty()`
+- `show collections`
+
 REFER TO 401 LAB 14
